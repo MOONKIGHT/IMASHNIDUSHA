@@ -4,7 +4,7 @@ Licensed under the  GPL-3.0 License;
 you may not use this file except in compliance with the License.
 kaviyaah - kavishka sandaruwan (v 8.0.0 avalable)
 */
-const diana = require('../events');
+const Asena = require('../events');
 const { MessageType, Mimetype } = require('@adiwajshing/baileys');
 const config = require('../config');
 const axios = require('axios');
@@ -22,7 +22,7 @@ let KSK = config.WORKTYPE == 'public' ? false : true
 let SKS = config.WORKTYPE == 'public' ? true : true
 const thumb = fs.readFileSync('./uploads/thumb/thumbdia.jpg')
 
-diana.addqueendiacmd({ queeendiacmd: 'song ?(.*)', fromMe: SKS, desc: Lang.SONG_DESC }, (async(message, match) => {
+Asena.addCommand({ queeendiacmd: 'song ?(.*)', fromMe: SKS, desc: Lang.SONG_DESC }, (async(message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid, NEED_TEXT_SONG, MessageType.text, { quoted: message.data });
     await message.client.sendMessage(message.jid, config.SONGD, MessageType.text, { quoted: message.data });
@@ -68,7 +68,7 @@ diana.addqueendiacmd({ queeendiacmd: 'song ?(.*)', fromMe: SKS, desc: Lang.SONG_
 
 
 
-diana.addqueendiacmd({ queeendiacmd: 'song ?(.*)', fromMe: KSK, noinmenu: true }, (async(message, match) => {
+Asena.addCommand({ queeendiacmd: 'song ?(.*)', fromMe: KSK, noinmenu: true }, (async(message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid, NEED_TEXT_SONG, MessageType.text, { quoted: message.data });
     await message.client.sendMessage(message.jid, config.SONGD, MessageType.text, { quoted: message.data });
